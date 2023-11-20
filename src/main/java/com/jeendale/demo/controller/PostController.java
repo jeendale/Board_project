@@ -18,6 +18,11 @@ public class PostController {
         PostResponseDto responseDto = postService.addPost(requestDto);
         return responseDto;
     }
-    @GetMapping()
+    @GetMapping("/{postId}")
+    public PostResponseDto getPost(
+            @PathVariable Long postId
+    ){
+        return postService.getPost(postId);
+    }
 
 }
