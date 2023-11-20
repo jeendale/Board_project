@@ -2,6 +2,7 @@ package com.jeendale.demo.controller;
 
 import com.jeendale.demo.dto.PostAddRequestDto;
 import com.jeendale.demo.dto.PostResponseDto;
+import com.jeendale.demo.dto.PostUpdateRequestDto;
 import com.jeendale.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,14 @@ public class PostController {
     @GetMapping
     public List<PostResponseDto> getPosts(){
         return postService.getPosts();
+    }
+
+    @PatchMapping("/{postId}")
+    public PostResponseDto updatePost(
+            @PathVariable Long postId,
+            @RequestBody PostUpdateRequestDto requestDto
+    ){
+        return postService.updatePost(postId,requestDto);
     }
 
 }

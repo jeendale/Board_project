@@ -1,6 +1,7 @@
 package com.jeendale.demo.entity;
 
 import com.jeendale.demo.dto.PostAddRequestDto;
+import com.jeendale.demo.dto.PostUpdateRequestDto;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -27,5 +28,11 @@ public class PostEntity extends TimeEntity{
         this.author=requestDto.getAuthor();
         this.password= requestDto.getPassword();;
         this.content= requestDto.getContent();
+    }
+
+    public void update(PostUpdateRequestDto requestDto) {
+        this.title=requestDto.getTitle();
+        this.author=requestDto.getAuthor();
+        this.content=requestDto.getContent();
     }
 }
