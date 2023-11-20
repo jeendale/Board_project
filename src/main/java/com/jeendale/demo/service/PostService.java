@@ -45,8 +45,19 @@ public class PostService {
         postEntity.update(requestDto);
         return new PostResponseDto(postEntity);
     }
+
+    public void deletePost(Long postId,String password) {
+        PostEntity postEntity=getPostEntity(postId);
+
+        if(!postEntity.getPassword().equals(password)){
+            throw new NullPointerException("비밀번호가 일치하지 않습니다.");
+        }
+
+        postJpaRepository.delete(postEntity);
+    }
     private PostEntity getPostEntity(Long postId) {
         return postJpaRepository.findById(postId)
                 .orElseThrow(() -> new NullPointerException("해당 게시글을 찾을 수 없습니다."));
     }
+
 }
